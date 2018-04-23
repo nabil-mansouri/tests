@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/19 18:40:06 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/19 20:06:20 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/23 12:25:25 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,6 +41,7 @@ typedef struct GraphElement
 	Bool		is_oriented; // oriente ou non
 	int			nb_vertices; // Sommets
 	AdjencyList	tab_neighbours; //Voisins
+	FILE		*graph_file;
 }GraphElement, *Graph;
 
 /*Prototypes */
@@ -49,5 +50,7 @@ Bool		is_empty_graph(Graph g);
 NodeList	add_node(int x);
 void		add_edge(Graph g, int src,int dest);
 void		erase_graph(Graph g);
+void		print_graph(Graph g);
+void		display_graph(Graph g);
 
 #endif
