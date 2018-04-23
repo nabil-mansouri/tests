@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   nuklear.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/04/19 18:39:02 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/23 12:31:50 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/04/23 13:24:21 by nerahmou     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/23 15:43:46 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "graph.h"
+#define NK_IMPLEMENTATION
+#include "lib/nuklear.h"
+#include "lib/src/nuklear.h"
+
+void	test()
+{
+	struct nk_context ctx;
+	const struct nk_user_font font;
+	nk_init_default(&ctx, &font);
+}
 
 int main(int argc, const char *argv[])
 {
-	Graph g1;
-
-	g1 = new_graph(5, false);
-	
-	add_edge(g1, 1, 2);
-	add_edge(g1, 1, 5);
-	add_edge(g1, 2, 4);
-	add_edge(g1, 2, 3);
-	add_edge(g1, 3, 4);
-	add_edge(g1, 4, 5);
-
-	display_graph(g1);
-	
-	erase_graph(g1);
+	test();
 	return 0;
 }
