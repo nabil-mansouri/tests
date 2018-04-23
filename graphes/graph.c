@@ -20,13 +20,19 @@ void		add_edge(Graph g, int src,int dest)
 
 	n = add_node(dest);
 	n->next = g->tab_neighbours[src - 1].begin;
+	g->tab_neighbours[src - 1].begin = n;
+	if (!g->is_oriented)
+	{
+		n = add_node(src);
+		n->next = g->tab_neighbours[dest - 1].begin;
+		g->tab_neighbours[dest - 1].begin = n;
+	}
 }
 
 void		erase_graph(Graph g)
 {
 	if (is_empty_graph(g))
 		return ;
-
 }
 
 NodeList	add_node(int x)
@@ -59,4 +65,5 @@ Graph new_graph(int vertices, Bool is_oriented)
 	elem->tab_neighbours = malloc(vertices * sizeof(AdjencyListElement));
 	while (++i <= vertices)
 		elem->tab_neighbours[i - 1].begin = NULL;
+		return (elem);
 }
