@@ -1,0 +1,63 @@
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   responsive.css                                   .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: nerahmou <nerahmou@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/04/25 07:33:13 by nerahmou     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/25 07:33:15 by nerahmou    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
+body
+{
+    background-color: darkgray;
+}
+
+#conteneur
+{
+    display: flex;
+    
+    flex-direction: column;
+}
+.element
+{
+    margin: auto;
+    text-align: center;
+}
+table
+{
+    margin-top: 50px;
+    border-collapse: collapse;
+    background-color : burlywood;
+}
+td
+{
+    border: 3px solid gray;
+    width: 150px;
+    font-weight: bold;
+    
+}
+td:hover
+{
+    background-color: whitesmoke;
+}
+td :nth-child(1)
+{
+    font-size: 0.8vw;
+    text-align: right;
+    color: teal;
+}
+td :nth-child(2)
+{
+    font-size: 2vw;
+    margin: auto;
+}
+td :nth-child(3)
+{
+    font-size: 0.8vw;
+    text-align: left;
+    color: brown;
+}
