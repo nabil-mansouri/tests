@@ -12,57 +12,77 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "ft_list.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-void	display(t_list *list)
+void	display(Stack list)
 {
-	while (list)
+	if (!list)
+		return ;
+	printf("[%d] --> ", list->value);
+	display(list->next);
+}
+
+Stack	new_stack()
+{
+	return NULL;
+}
+
+
+Boolean is_empty(Stack sta)
+{
+	if (sta == NULL)
+		return 1;
+	return 0;
+}
+
+Stack push_stack(Stack *sta, int x)
+{
+	Stack elem;
+
+	elem = malloc(sizeof(*elem));
+	elem->value = x;
+	elem->next = *sta;
+	return (elem);
+}
+
+Stack pop_stack(Stack sta)
+{
+	Stack elem;
+
+	if (is_empty(sta))
+		return NULL;
+	elem = sta->next;
+	free (sta);
+	return (elem);
+}
+
+Stack	clear(Stack sta)
+{
+	while (!is_empty(sta))
+		sta = pop_stack(sta);
+	return (new_stack());
+}
+
+int	sta_length(Stack sta)
+{
+	int length;
+
+	length = 0;
+	while (sta)
 	{
-		printf("[%s] --> ", list->content);
-		list = list->next;
+		length++;
+		sta = sta->next;
 	}
+	return (length);
 }
-
-void	add_last(t_list **beginlist, char * name)
-{
-	t_list	*new;
-	t_list	*tmp;
-
-	new = (t_list*)malloc(sizeof(t_list));
-	new->content = name;
-	new->content_size = ft_strlen(name);
-	new->next = NULL;
-	if (*beginlist)
-	{
-		tmp = *beginlist;
-			while (tmp->next)
-			{
-				tmp = tmp->next;
-			}
-			tmp->next  = new;
-		
-	}
-	else
-		*beginlist = new;
-}
-
-void	clear(void	*content, size_t size)
-{
-	ft_memdel(content);
-	size = 0;
-}
-
-
 int main(int argc, const char *argv[])
 {
-	t_list *maliste;
-
-	add_last(&maliste,"nessim");
-	add_last(&maliste,"salut");
-	add_last(&maliste,"geofroy");
-	display(maliste);
-	ft_memdel((void**)&maliste);
-	display(maliste);
+	Stack sta = new_stack();
+	sta = push_stack(&sta, 10);
+	sta = push_stack(&sta, 15);
+	printf("%d",sta_length(sta));
+	display(sta);
 	return 0;
 }
