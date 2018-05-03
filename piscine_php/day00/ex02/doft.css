@@ -1,14 +1,128 @@
-# **************************************************************************** #
-#                                                           LE - /             #
-#                                                               /              #
-#    doft.css                                         .::    .:/ .      .::    #
-#                                                  +:+:+   +:    +:  +:+:+     #
-#    By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+      #
-#                                                  #+#   #+    #+    #+#       #
-#    Created: 2018/04/25 07:00:34 by nerahmou     #+#   ##    ##    #+#        #
-#    Updated: 2018/04/25 07:00:36 by nerahmou    ###    #+. /#+    ###.fr      #
-#                                                          /                   #
-#                                                         /                    #
-# **************************************************************************** #
+body
+{
+    background-color: #505050;
+}
 
+#conteneur
+{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 80%;
+}
 
+header
+{
+    display: flex;
+    background-color: #909090;
+    justify-content:space-between;
+    margin: 20px 0 30px;
+}
+
+#ou
+{
+    margin: 10px;
+    width: 30%;
+    height: 30%;
+}
+
+#close_reload
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#close_reload > img
+{
+    width: 30px;
+    margin: 10px;
+}
+
+#loupe
+{
+    position: relative;
+    margin: auto;
+    left: 26%;
+    top: 20px;
+    width: 320px;
+}
+section
+{
+    display: flex;
+    justify-content: space-around;
+    width: 98%;
+    margin: auto;
+}
+
+#left
+{
+    background-color: #909090;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    align-items: center;
+}
+
+#center
+{
+    background-color: #909090;
+    display: flex;
+    flex-direction: column;
+    width: 78%;
+    margin: 0 30px;
+    height: 850px;
+}
+#center img
+{
+    margin: auto;
+    width: 98%;
+    height: 97%;
+}
+
+#right
+{
+    background-color: #909090;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#left > img
+{
+    width: 100px;
+    margin: 10px;
+}
+
+#right > img
+{
+    width: 100px;
+    margin: 10px;
+}
+
+#oeil
+{
+    border: solid 8px red;
+    border-radius: 10px;
+}
+
+#brick
+{
+    background: repeat url("resources/brick.jpg");
+    background-size: 40px;
+    width: 76%;
+    height: 90px;
+}
+
+header, #left, #center, #right
+{
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px black;
+}
+
+#left, #right
+{
+    width: 10%;
+    padding: 10px 0 10px 0;
+    height: 600px;
+}
