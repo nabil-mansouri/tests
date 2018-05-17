@@ -19,9 +19,9 @@ int main(int argc, char *argv[])
 	SDL_Window	*window;
 	SDL_Renderer *renderer;
 	SDL_Event        events;
-	/*SDL_Rect	rectangle;
+	SDL_Rect	rectangle;
 	int done = 0;
-	window = NULL;
+	/*window = NULL;
 	renderer = NULL;
 	rectangle.x = 20;
 	rectangle.y = 20;
@@ -31,10 +31,10 @@ int main(int argc, char *argv[])
 	if (SDL_Init(SDL_INIT_VIDEO))
 		exit(EXIT_FAILURE);
 	window =SDL_CreateWindow("SDL2", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-			                              640, 480, SDL_WINDOW_ALLOW_HIGHDPI);
-	SDL_Delay(3333);
-	/*renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+			                              640, 480, SDL_WINDOW_ALLOW_HIGHDPI);	
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	SDL_RenderPresent(renderer);
+//	SDL_Delay(3333);
 	while (!done)
 	{
 		SDL_WaitEvent(&events);
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 		if (events.window.event == SDL_WINDOWEVENT_CLOSE)
 			done = 1;
 	}
-*/	
+	
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
