@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body
+        {
+            text-align: center;
+            background-color: cornflowerblue;
+        }
+        form
+        {
+            margin-top: 20%;
+            background-color: dodgerblue;
+            border-radius: 20%;
+            display: inline-block;
+            text-align: center;
+            border: orange solid 2px;
+        }
+
+        form *
+        {
+            background-color: orange;
+            text-align: center;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <input type="text" id="nb1" placeholder="Nb1"/>
+    <select name="operation" id="operation">
+        <optgroup label="Operation">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </optgroup>
+    </select>
+    <input type="text" id="nb2" placeholder="Nb2"/><br>
+    <input type="submit" id="submit" value="Try me"/>
+</form>
+<script>
+        setInterval(function (){
+            alert('Please, use me...')}, 30000
+        );
+
+        var submit = document.querySelector('#submit');
+
+        function getRes(nb1, op, nb2)
+        {
+            switch (op)
+            {
+                case "+":
+                    return nb1 + nb2;
+                    break;
+                case "-":
+                    return nb1 - nb2;
+                    break;
+                case "*":
+                    return nb1 * nb2;
+                    break;
+                case "/":
+                    return nb1 / nb2;
+                    break;
+                case "%":
+                    return nb1 % nb2;
+                    break;
+            }
+        }
+
+    submit.addEventListener("click", function () {
+
+        var res;
+        var nb1 = parseInt(document.querySelector('#nb1').value, 10);
+        var nb2 = parseInt(document.querySelector('#nb2').value, 10);
+        var op = document.querySelector('#operation');
+
+        op = op.options[op.selectedIndex].innerHTML;
+
+        if (isNaN(nb1) || isNaN(nb2) || nb1 < 0 || nb2 < 0)
+             return alert("error");
+        else if ((op == '/' || op == '%') && nb2 == 0)
+            res = "It’s over 9000!";
+        else
+            res = getRes(nb1, op, nb2);
+       console.log(res);
+       alert(res);
+    })
+
+</script>
+</body>
+</html>
