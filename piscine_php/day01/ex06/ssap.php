@@ -10,7 +10,6 @@
       array_push($array, $argv[$i]);
  }
  sort($array, SORT_STRING);
- foreach ($array as $key) {
+ foreach ($array as $key)
      echo "$key\n";
- }
 ?>

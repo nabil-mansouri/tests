@@ -1,13 +1,15 @@
 #!/usr/bin/php
 <?php
 
-$key = $argv[1];
-
+if ($argc < 3)
+    exit();
 foreach ($argv as $elem)
 {
-    if ($elem == $key)
+    if ($elem == $argv[1])
         continue ;
-    if (strstr($elem, $key))
-        $res = substr($elem, strlen($key) + 1);
+    $array = explode(":", $elem);
+    if (!strcmp($array[0], $argv[1]))
+        $res = $array[1];
 }
-echo $res;
+if ($res)
+    echo $res."\n";

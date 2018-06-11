@@ -43,53 +43,60 @@
     <input type="submit" id="submit" value="Try me"/>
 </form>
 <script>
-        setInterval(function (){
-            alert('Please, use me...')}, 30000
-        );
 
-        var submit = document.querySelector('#submit');
-
-        function getRes(nb1, op, nb2)
-        {
-            switch (op)
-            {
-                case "+":
-                    return nb1 + nb2;
-                    break;
-                case "-":
-                    return nb1 - nb2;
-                    break;
-                case "*":
-                    return nb1 * nb2;
-                    break;
-                case "/":
-                    return nb1 / nb2;
-                    break;
-                case "%":
-                    return nb1 % nb2;
-                    break;
-            }
-        }
-
-    submit.addEventListener("click", function () {
+    document.querySelector('#submit').addEventListener("click", function () {
 
         var res;
-        var nb1 = parseInt(document.querySelector('#nb1').value, 10);
-        var nb2 = parseInt(document.querySelector('#nb2').value, 10);
-        var op = document.querySelector('#operation');
+        var calc;
 
-        op = op.options[op.selectedIndex].innerHTML;
-
-        if (isNaN(nb1) || isNaN(nb2) || nb1 < 0 || nb2 < 0)
-             return alert("error");
-        else if ((op == '/' || op == '%') && nb2 == 0)
+        if ((calc = checkError(document.querySelector('#nb1').value, document.querySelector('#nb2').value, document.querySelector('#operation'))) == null)
+            return alert("Error :(");
+        if ((calc.op == '/' || calc.op == '%') && calc.nb2 == 0)
             res = "It’s over 9000!";
         else
-            res = getRes(nb1, op, nb2);
-       console.log(res);
-       alert(res);
+            res = getRes(calc.nb1, calc.op, calc.nb2);
+        console.log(res);
+        alert(res);
     })
 
+    function checkError(nb1, nb2, op) {
+
+        var regex = new RegExp('^[0-9]+$');
+
+        if (!regex.test(nb1) || !regex.test(nb2))
+            return null;
+        return {
+            nb1: parseInt(nb1, 10),
+            nb2: parseInt(nb2, 10),
+            op: op.options[op.selectedIndex].innerHTML
+        }
+    }
+
+    function getRes(nb1, op, nb2)
+    {
+        switch (op)
+        {
+            case "+":
+                return nb1 + nb2;
+                break;
+            case "-":
+                return nb1 - nb2;
+                break;
+            case "*":
+                return nb1 * nb2;
+                break;
+            case "/":
+                return nb1 / nb2;
+                break;
+            case "%":
+                return nb1 % nb2;
+                break;
+        }
+    }
+
+    setInterval(function (){
+        alert('Please, use me...')}, 30000
+    );
 </script>
 </body>
 </html>

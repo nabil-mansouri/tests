@@ -10,4 +10,4 @@ foreach ($tab as $key => $elem)
     array_push($tab2, $elem);
 }
 $tab2[count($tab2)] = $tab[0];
-echo implode(" ", $tab2);
+echo implode(" ", $tab2)."\n";

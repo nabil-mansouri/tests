@@ -22,28 +22,42 @@
     <div id="conteneur">
         <header>
             <img id="ou" src="resources/day_of_the_42.png" alt=""/>
-                <img id="loupe" src="resources/loupe.png" alt="">
-
+                <img id="loupe" src="resources/loupe.png" title="magnifying_glass" alt="magnifying_glass">
             <div id="close_reload">
-                <img src="resources/reload.png" alt=""/>
-                <img src="resources/close.gif" alt=""/>
+                <a href="http://www.disney.com">
+                    <img src="resources/reload.png" title="Recommencer au début" alt="Recommencer au début"/>
+                </a>
+                <a href="http://www.relaischateaux.com">
+                    <img src="resources/close.gif" title="Déconnecter" alt="Déconnecter"/>
+                </a>
             </div>
         </header>
         <section>
             <div id="left">
-                <img src="resources/arrow.png" alt=""/>
-                <img src="resources/main.png" alt=""/>
-                <img id="oeil" src="resources/oeil.png" alt=""/>
-                <img src="resources/outil.png" alt=""/>
-                <img src="resources/chat-icon.png" alt=""/>
+                <img src="resources/arrow.png" title="Avancer" alt="Avancer"/>
+                <img src="resources/main.png" title="Prendre" alt="Prendre"/>
+                <img id="oeil" src="resources/oeil.png" title="Regarder" alt="Regarder"/>
+                <img src="resources/outil.png" title="Utiliser" alt="Utiliser"/>
+                <img src="resources/chat-icon.png" title="Parler" alt="Parler"/>
             </div>
             <div id="center">
-                <img src="resources/cluster.jpg" alt=""/>
+                <img src="resources/cluster.jpg" alt="" usemap="#test"/>
+                <map name="test">
+                    <area shape="rect" coords="500,470,650,650" href="http://www.ikea.com" title="Chaise IKEA" alt="Chaise IKEA">
+                    <area shape="rect" coords="1180,440,1480,700" href="http://www.apple.com" title="IMac" alt="IMac">
+                </map>
             </div>
             <div id="right">
-                <img src="resources/book.png" alt=""/>
-                <img src="resources/towel.png" alt=""/>
-                <div id="brick"></div>
+                <img src="resources/book.png" title="Notebook" alt="Notebook"/>
+                <img src="resources/towel.png" title="Towel" alt="Towel"/>
+                <div id="brick" title="Brick"></div>
+            </div>
+            <div id="chat">
+                <p>Vous <strong>entrez</strong> alors dans une grande piece remplie <br>
+                    d'<span id="ordi">ordinateurs</span>... </p>
+                <p>- Bonjour, vous êtes nouveau ici ?</p>
+                <input type="text">
+                <input type="button" value="Repondre">
             </div>
         </section>
     </div>

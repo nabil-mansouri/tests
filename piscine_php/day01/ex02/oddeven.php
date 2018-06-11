@@ -1,14 +1,22 @@
 #!/usr/bin/php
 <?php
-echo "Entrez un nombre : ";
-while ($ligne = trim(fgets(STDIN)))
+
+$stdin = fopen('php://stdin', 'r');
+
+while ($stdin && !feof($stdin))
 {
-    if (! is_numeric($ligne))
-    echo "'".trim($ligne)."' n'est pas un chiffre\n";
-    elseif ($ligne % 2 != 0)
-    echo "Le chiffre ".trim($ligne)." est Impair\n";
-    else
-    echo "Le chiffre ".trim($ligne)." est Pair\n";
     echo "Entrez un nombre : ";
+    if ($ligne = fgets($stdin))
+    {
+        $ligne = str_replace("\n", "",$ligne);
+        if (!is_numeric($ligne))
+            echo "'".$ligne."' n'est pas un chiffre\n";
+        else if ($ligne % 2 != 0)
+            echo "Le chiffre " .$ligne. " est Impair\n";
+        else
+            echo "Le chiffre " .$ligne. " est Pair\n";
+    }
 }
+fclose($stdin);
+echo "\n";
 ?>

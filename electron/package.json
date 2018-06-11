@@ -1,0 +1,17 @@
+{
+  "name": "mon_app",
+  "version": "1.0.0",
+  "description": "Test",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "author": "Nessman",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "electron": "^2.0.2"
+  },
+  "dependencies": {
+    "get-stdin": "^6.0.0"
+  }
+}

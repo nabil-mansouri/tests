@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LEM_IN</title>
+        <style>
+          
+            body {
+                background: url('../../Desktop/sol.jpg') center no-repeat fixed;
+                background-size: cover;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            
+
+            const ipc = require('electron').ipcMain;
+                
+            ipc.on('log-error', (event, arg) => {
+             console.log(`Erreur ${arg}`);
+            });
+ /*           var salle = document.createElement("div");
+    salle.style.width = '20px';
+    salle.style.height = '20px';
+    salle.style.backgroundColor = 'red';
+    salle.style.left = x;
+    salle.style.top = y;
+*/
+        </script>
+    </body>
+</html>

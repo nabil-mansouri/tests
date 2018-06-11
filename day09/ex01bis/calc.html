@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body
+        {
+            text-align: center;
+            background-color: cornflowerblue;
+        }
+        form
+        {
+            margin-top: 20%;
+            background-color: dodgerblue;
+            border-radius: 20%;
+            display: inline-block;
+            text-align: center;
+            border: orange solid 2px;
+        }
+
+        form *
+        {
+            background-color: orange;
+            text-align: center;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <input type="text" id="nb1" placeholder="Nb1"/>
+    <select name="operation" id="operation">
+        <optgroup label="Operation">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </optgroup>
+    </select>
+    <input type="text" id="nb2" placeholder="Nb2"/><br>
+    <input type="submit" id="submit" value="Try me"/>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        setInterval(function (){alert('Please, use me...')}, 30000);
+        $('#submit').click(function () {
+
+        var res;
+        var calc;
+
+        if ((calc = checkError($('#nb1').val(), $('#nb2').val(), $('#operation'))) == null)
+            alert("Error :(");
+        if ((calc.op == '/' || calc.op == '%') && calc.nb2 == 0)
+            res = "It’s over 9000!";
+        else
+            res = getRes(calc.nb1, calc.op, calc.nb2);
+        console.log(res);
+        alert(res);
+
+        })
+
+    })
+
+    function checkError(nb1, nb2, op) {
+
+        var regex = new RegExp('^[0-9]+$');
+
+        if (!regex.test(nb1) || !regex.test(nb2))
+            return null;
+        return {
+            nb1: parseInt(nb1, 10),
+            nb2: parseInt(nb2, 10),
+            op: op.find(":selected").text()
+        }
+    }
+
+    function getRes(nb1, op, nb2)
+    {
+        switch (op)
+        {
+            case "+":
+                return nb1 + nb2;
+                break;
+            case "-":
+                return nb1 - nb2;
+                break;
+            case "*":
+                return nb1 * nb2;
+                break;
+            case "/":
+                return nb1 / nb2;
+                break;
+            case "%":
+                return nb1 % nb2;
+                break;
+        }
+    }
+
+</script>
+</body>
+</html>

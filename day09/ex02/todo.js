@@ -1,78 +1,64 @@
 var ft_list = document.querySelector('#ft_list');
-var buttonNew = document.querySelector('#new');
 var tasks;
-var promptRes;
 var cookie;
-var tasksArray = [];
-var length;
+var tasksArray;
 
 window.onload = function () {
 
+    document.querySelector('#new').addEventListener("click", newTask);
     if (cookie = getCookie("tasks"))
     {
         tasksArray = cookie.split(';');
         for(var i = 0; i < tasksArray.length; i++)
-            createDiv(tasksArray[i]);
+            createTask(tasksArray[i]);
     }
-    updateEventList(1);
+    tasksArray = [];
 }
 
-buttonNew.addEventListener("click", function () {
+window.onunload = function () {
+    var childrenList;
+
+    childrenList = ft_list.children;
+
+    for (var i = 0; i < childrenList.length; i++)
+        tasksArray.unshift(childrenList[i].innerHTML);
+    setCookie("tasks", tasksArray.join(';'));
+}
+
+function newTask() {
+    var promptRes;
 
     if (promptRes = prompt("New task"))
-    {
-        createDiv(promptRes);
-        tasksArray.push(promptRes);
-        setCookie("tasks", tasksArray.join(";"));
-        updateEventList(0);
-    }
-})
-
-
-function updateEventList(onload) {
-    tasks = document.querySelectorAll(".tasks");
-    length = tasks.length;
-
-    if (!onload)
-        length = 1;
-    for (var i = 0; i < length; i++)
-    {
-        tasks[i].addEventListener("click", function () {
-            if (confirm("Delete the task : " + this.innerHTML))
-            {
-                this.remove();
-                tasksArray.pop();
-                setCookie("tasks", tasksArray.join(';'));
-            }
-        })
-    }
+        createTask(promptRes);
 }
 
-function createDiv(res) {
+function deleteTask() {
+    if (confirm("Delete the task : " + this.innerHTML))
+        this.remove();
+}
 
-    var text = document.createTextNode(res);
-    var div = document.createElement("div")
+function createTask(res) {
 
-    div.style.cssText = "border: solid black 1px; background-color: red; margin: 10px;";
+    var div = document.createElement("div");
+
+    div.innerHTML = res;
     div.classList.add("tasks");
-    div.appendChild(text);
+    div.addEventListener("click", deleteTask);
     ft_list.insertBefore(div, ft_list.firstChild);
 }
 
 
 function setCookie(sName, sValue) {
     var today = new Date(), expires = new Date();
-    expires.setTime(today.getTime() + (60000));
+    expires.setTime(today.getTime() + 10000);
     document.cookie = sName + "=" + encodeURIComponent(sValue) + ";expires=" + expires.toGMTString();
 }
-
-
 
 function getCookie(sName) {
     var cookContent = document.cookie, cookEnd, i, j;
     var sName = sName + "=";
 
-    for (i=0, c=cookContent.length; i<c; i++) {
+    for (i = 0, c = cookContent.length; i < c; i++) {
         j = i + sName.length;
         if (cookContent.substring(i, j) == sName) {
             cookEnd = cookContent.indexOf(";", j);

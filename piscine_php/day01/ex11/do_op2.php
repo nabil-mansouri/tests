@@ -29,3 +29,4 @@ switch ($op)
         echo $nbr1 % $nbr2;
         break ;
 }
+echo "\n";
