@@ -2,7 +2,8 @@ const ipc = require('electron').ipcRenderer;
 
 exports.get_data = function (mainWindow, tab)
 {
-  mainWindow.webContents.send("test", {"bla":"bla"})
+  ipc.send('test', {name: tab[0], x: parseInt(tab[1]),y: parseInt(tab[2])});
+ // mainWindow.webContents.send("test", {"bla":"bla"})
  
   /* for (var i = 0; i < tab.length; i++) {
     if (!i)

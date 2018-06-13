@@ -38,7 +38,6 @@ app.on('activate', () => {
 
 let ants = 0;
 
-
-
-//const ipc = require('electron').ipcRenderer;
-//ipc.send('log-error', 'salut');
+getStdin().then(str => {
+  data.get_data(mainWindow, str.split("\n").pop());
+});

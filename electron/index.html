@@ -12,15 +12,12 @@
     </head>
     <body>
         <script>
-            
+            const { ipcRenderer } = require('electron');
 
-            const ipc = require('electron').ipcMain;
-                
-            ipc.on('log-error', (event, arg) => {
-             console.log(`Erreur ${arg}`);
+            ipcRenderer.on('test', (event, arg) => {
+                console.log(`Erreur ${arg}`);
             });
 
-            
  /*           var salle = document.createElement("div");
     salle.style.width = '20px';
     salle.style.height = '20px';
